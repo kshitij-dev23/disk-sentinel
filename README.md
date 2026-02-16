@@ -1,38 +1,61 @@
-# Disk Sentinel
+# 🛡 Disk Sentinel
 
-Disk Sentinel is a lightweight Python CLI tool that analyzes directory usage.
+Disk Sentinel is a lightweight Python CLI tool that analyzes a directory and provides:
 
-It scans a given path and reports:
-- Total number of folders
-- Total number of files
-- Largest file in the directory (recursive)
-- Size of the largest file (in GB)
+- Total number of folders  
+- Total number of files  
+- Detection of the largest file  
+- Size of the largest file (in GB)  
+
+It is designed to be simple, fast, and dependency-free.
 
 ---
 
 ## 🚀 Features
 
 - Recursive directory scanning using `os.walk`
-- Permission-safe file handling
-- Cross-platform path support
-- Command-line interface using `argparse`
-- Clean modular structure (scanner logic separated from CLI)
-
----
-
-## 🛠 Requirements
-
-- Python 3.8+
+- Largest file detection
+- Graceful handling of permission errors
+- Windows path normalization support
+- CLI interface using `argparse`
 - No external dependencies
 
 ---
 
-## ▶️ Usage
+## 🧰 Requirements
 
-Run from project root:
+- Python 3.8+
+- No third-party libraries required
+
+---
+
+## 📦 Project Structure
+
+```
+disk-sentinel/
+│
+├── main.py        # CLI entry point
+├── scanner.py     # Core scanning logic
+├── formatter.py   # (Optional future formatting module)
+├── README.md
+└── LICENSE
+```
+
+---
+
+## ▶ Usage
+
+Run from the project root directory:
 
 ```bash
 python main.py <path>
+```
+
+### Example
+
+```bash
+python main.py "C:\Users\Kshitiz Mishra\Downloads"
+```
 
 ---
 
@@ -40,22 +63,29 @@ python main.py <path>
 
 ```bash
 python main.py .
+```
 
+```
 --- Disk Sentinel Report ---
 Folders: 15
 Files: 102
 Largest file: C:/Users/Kshitiz Mishra/Downloads/movie.mp4
 Size (GB): 1.532
+```
 
 ---
 
-## Help
+## ❓ Help
 
-You can view CLI options using:
+To view CLI options:
 
 ```bash
 python main.py --help
+```
 
+Example output:
+
+```
 usage: disk-sentinel [-h] path
 
 Disk Sentinel - Analyze directory usage and detect largest files.
@@ -65,49 +95,49 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
+```
 
 ---
 
-## 🎯 Purpose
+## 🧠 How It Works
 
-Disk Sentinel was built to practice file system traversal, CLI tool design, and modular Python architecture.
-
-The goal is to build and gradually improve a real-world utility tool rather than isolated practice scripts.
-
----
-
-## 🧩 Technical Concepts Used
-
-- os.walk for recursive directory traversal
-- argparse for CLI interface
-- Modular program design
-- Exception handling (PermissionError)
-- Path normalization for cross-platform compatibility
+1. Validates directory path
+2. Recursively walks through folders using `os.walk`
+3. Counts files and directories
+4. Tracks largest file by comparing file sizes
+5. Handles permission errors safely
 
 ---
 
-## 🗺 Roadmap
+## ⚠ Error Handling
 
-### Version 1.0
-- Basic recursive scanning
-- Largest file detection
-- CLI interface
+- Invalid paths return a safe error message
+- Non-directory paths are rejected
+- Permission errors are skipped automatically
 
-### Planned Enhancements
-- Total directory size calculation
-- Top N largest files
-- File extension summary
-- JSON export mode
-- Packaging as installable CLI tool
+---
+
+## 🛠 Future Improvements
+
+- Add size summary per subdirectory
+- Add top N largest files
+- Add export to JSON/CSV
+- Add colored terminal output
+- Package as installable CLI tool
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
 
 ---
 
 ## 👤 Author
 
 Kshitiz Mishra  
-B.S. Electronic Systems Student  
-Interested in systems programming and cybersecurity tooling
+Python Developer | Cybersecurity Enthusiast
 
 ---
 
-⭐ If you find this useful, feel free to fork or improve it.
+⭐ If you found this project useful, consider starring the repository.
